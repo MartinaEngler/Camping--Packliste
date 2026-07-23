@@ -1,123 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camping mit Tina & Stefan</title>
 
-:root {
-  --bg: #f8f5ea;
-  --card: #ffffff;
-  --green: #3f6b3f;
-  --green-light: #6f9b6f;
-  --text: #2d2d2d;
-  --shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+  <meta name="theme-color" content="#3f6b4b">
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-body {
-  background: var(--bg);
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  padding: 16px;
-}
+<body>
 
-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
+<header class="hero">
+  <h1>🚐 Camping mit Tina & Stefan</h1>
+  <p>Nichts vergessen – nur geniessen.</p>
+</header>
 
-header h1 {
-  color: var(--green);
-  font-size: 2rem;
-}
+<main>
 
-header p {
-  margin-top: 8px;
-  color: #666;
-  font-style: italic;
-}
+<section class="card">
 
-section {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: var(--shadow);
-}
+<h2>Reiseplanung</h2>
 
-label {
-  display: block;
-  margin-top: 12px;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
+<label>Ziel</label>
+<input type="text" id="destination" placeholder="z.B. Südtirol">
 
-input,
-select {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  font-size: 16px;
-}
+<label>Abreise</label>
+<input type="date" id="departure">
 
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--green-light);
-}
+<label>Rückreise</label>
+<input type="date" id="return">
 
-.dates {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+<p id="countdown"></p>
 
-#countdown {
-  margin-top: 20px;
-  text-align: center;
-  color: var(--green);
-}
+</section>
 
-progress {
-  width: 100%;
-  height: 24px;
-  margin-top: 12px;
-}
+<section class="card">
 
-#progressText {
-  margin-top: 10px;
-  text-align: center;
-  font-weight: bold;
-}
+<h2>Fortschritt</h2>
 
-.category {
-  margin-bottom: 18px;
-}
+<div class="progress">
+<div id="progressBar"></div>
+</div>
 
-.category h3 {
-  color: var(--green);
-  margin-bottom: 10px;
-}
+<p id="progressText">0 von 0 eingepackt</p>
 
-.item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 8px 0;
-}
+</section>
 
-.item input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-}
+<section class="card">
 
-@media (max-width: 600px) {
-  .dates {
-    grid-template-columns: 1fr;
-  }
+<h2>Packliste</h2>
 
-  header h1 {
-    font-size: 1.6rem;
-  }
-}
+<div id="categories"></div>
+
+</section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
