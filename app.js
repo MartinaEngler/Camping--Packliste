@@ -49,3 +49,25 @@ function createChecklist() {
     container.appendChild(section);
 
   });
+ });
+
+    container.appendChild(section);
+
+  });
+
+}
+
+function updateProgress() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+
+  const total = checkboxes.length;
+  const done = checked.length;
+  const percent = total ? Math.round((done / total) * 100) : 0;
+
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `${done} von ${total} eingepackt (${percent}%)`;
+}
+
+createChecklist();
+updateProgress();
