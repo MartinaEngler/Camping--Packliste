@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camping mit Tina & Stefan</title>
 
-<title>Camping mit Tina & Stefan</title>
+  <meta name="theme-color" content="#3f6b4b">
 
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
-
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-<h1>🚐 Camping mit Tina & Stefan</h1>
-<p>Nichts vergessen – nur geniessen.</p>
+<header class="hero">
+  <h1>🚐 Camping mit Tina & Stefan</h1>
+  <p>Nichts vergessen – nur geniessen.</p>
 </header>
+
+<main>
+
+<section class="card">
+
+<h2>Reiseplanung</h2>
+
+<label>Ziel</label>
+<input type="text" id="destination" placeholder="z.B. Südtirol">
+
+<label>Abreise</label>
+<input type="date" id="departure">
+
+<label>Rückreise</label>
+<input type="date" id="return">
+
+<p id="countdown"></p>
+
+</section>
+
+<section class="card">
+
+<h2>Fortschritt</h2>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+<p id="progressText">0 von 0 eingepackt</p>
+
+</section>
+
+<section class="card">
+
+<h2>Packliste</h2>
+
+<div id="categories"></div>
+
+</section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
