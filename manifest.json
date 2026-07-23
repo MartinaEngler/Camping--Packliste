@@ -1,9 +1,11 @@
+
 {
   "name": "Camping mit Tina & Stefan",
   "short_name": "Camping",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#f5f4ed",
+  "background_color": "#f8f5ea",
   "theme_color": "#3f6b3f",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "icons": []
 }
