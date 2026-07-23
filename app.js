@@ -8,7 +8,6 @@ function createChecklist() {
   container.innerHTML = "";
 
   categories.forEach(category => {
-
     const section = document.createElement("section");
     section.className = "category";
 
@@ -17,7 +16,6 @@ function createChecklist() {
     section.appendChild(title);
 
     category.items.forEach(item => {
-
       const row = document.createElement("div");
       row.className = "item";
 
@@ -39,11 +37,9 @@ function createChecklist() {
       row.appendChild(label);
 
       section.appendChild(row);
-
     });
 
     container.appendChild(section);
-
   });
 
   updateProgress();
@@ -58,12 +54,10 @@ function updateProgress() {
   const percent = total === 0 ? 0 : Math.round(done / total * 100);
 
   progressBar.style.width = percent + "%";
-  progressText.textContent =
-    ${done} von ${total} eingepackt (${percent}%);
+  progressText.textContent = ${done} von ${total} eingepackt (${percent}%);
 }
 
 function updateCountdown() {
-
   if (!departureInput.value) {
     countdown.textContent = "";
     return;
@@ -72,23 +66,18 @@ function updateCountdown() {
   const today = new Date();
   const departure = new Date(departureInput.value);
 
-  today.setHours(0,0,0,0);
-  departure.setHours(0,0,0,0);
+  today.setHours(0, 0, 0, 0);
+  departure.setHours(0, 0, 0, 0);
 
-  const diff = Math.ceil(
-    (departure - today) / (1000 * 60 * 60 * 24)
-  );
+  const diff = Math.ceil((departure - today) / (1000 * 60 * 60 * 24));
 
   if (diff > 0) {
-    countdown.textContent =
-      ⏳ Noch ${diff} Tage bis zur Abreise;
+    countdown.textContent = ⏳ Noch ${diff} Tage bis zur Abreise;
   } else if (diff === 0) {
-    countdown.textContent =
-      "🎉 Heute geht's los!";
+    countdown.textContent = "🎉 Heute geht's los!";
   } else {
     countdown.textContent = "";
   }
-
 }
 
 departureInput.addEventListener("change", updateCountdown);
