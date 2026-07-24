@@ -1,4 +1,4 @@
-const container = document.getElementById("categories");
+console.log(categories);
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progressText");
 const departureInput = document.getElementById("departure");
