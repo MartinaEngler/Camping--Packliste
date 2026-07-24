@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camping mit Tina & Stefan</title>
-
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Camping mit Tina & Stefan</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef4e8;color:#2f4f2f;margin:0}
+header{background:#4f7d3a;color:#fff;padding:20px;text-align:center}
+main{max-width:800px;margin:auto;padding:20px}
+.card{background:#fff;border-radius:12px;padding:16px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+input{width:100%;padding:10px;margin:6px 0 12px;box-sizing:border-box}
+label{display:block;padding:6px 0}
+progress{width:100%;height:20px}
+button{padding:10px 16px;border:none;border-radius:8px;background:#4f7d3a;color:white}
+</style>
 </head>
-
 <body>
-
-<div class="container">
-
-    <h1>🚐 Camping mit Tina & Stefan</h1>
-    <p class="subtitle">Nichts vergessen – nur geniessen.</p>
-
-    <h2>Reiseplanung</h2>
-
-    <div class="trip">
-        <label>
-            Ziel
-            <input type="text" id="destination" placeholder="z.B. Südtirol">
-        </label>
-
-        <label>
-            Abreise
-            <input type="date" id="departure">
-        </label>
-
-        <label>
-            Rückreise
-            <input type="date" id="return">
-        </label>
-    </div>
-
-    <p id="countdown"></p>
-
-    <h2>Fortschritt</h2>
-
-    <div class="progress">
-        <div id="progressBar"></div>
-    </div>
-
-    <p id="progressText">0 von 0 eingepackt</p>
-
-    <h2>Packliste</h2>
-
-    <div id="categories"></div>
-
+<header><h1>🚐 Camping mit Tina & Stefan</h1><p>Nichts vergessen – nur geniessen.</p></header>
+<main>
+<div class="card">
+<h2>Reise</h2>
+<input id="ziel" placeholder="Reiseziel">
+<input id="start" type="date">
+<p id="countdown">Noch kein Datum gewählt.</p>
 </div>
-
-<script src="data.js"></script>
-<script src="app.js"></script>
-
-</body>
-
-</html>
+<div class="card">
+<h2>Packliste</h2>
+<div id="list"></div>
+<p id="status"></p>
+<progress id="bar" max="100"></progress>
+<button onclick="resetList()">Zurücksetzen</button>
+</div>
+</main>
+<script>
+const items=["Ausweise","Portemonnaie","Handy","Ladekabel","Kleider","Jacke","Schuhe","Zahnbürste","Handtuch","Campingstühle","Campingtisch","Taschenlampe","Hundeleine","Hundefutter"];
+const list=document.getElementById("list");
+function render(){
+ list.innerHTML="";
+ items.forEach((t,i)=>{
+  const l=document.createElement("label");
+  const c=document.createElement("input");
+  c.type="checkbox";
+  c.checked=localStorage.getItem("camp_"+i)=="1";
+  c.onchange=()=>{localStorage.setItem("camp_"+i,c.checked?"1":"0");update();};
+  l.append(c," "+t); list.append(l);
+ });
+ update();
+}
+function update(){
+ const c=[...document.querySelectorAll("input[type=checkbox]")];
+ const d=c.filter(x=>x.checked).length;
+ document.getElementById("status").textContent=${d} von ${c.length} eingepackt;
+ document.getElementById("bar").value=c.length?d/c.length*100:0;
+}
+function resetList(){localStorage.clear();render();}
+document.getElementById("start").onchange=()=>{
+ const dt=new Date(start.value); if(isNaN(dt)) return;
+ const diff=Math.ceil((dt-new Date())/86400000);
+ countdown.textContent=diff>=0?⏳ Noch ${diff} Tage bis zur Abreise!:"Die Reise hat begonnen.";
+};
+render();
+</script>
+</body></html>
