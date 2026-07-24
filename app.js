@@ -35,7 +35,6 @@ function createChecklist() {
 
       row.appendChild(checkbox);
       row.appendChild(label);
-
       section.appendChild(row);
     });
 
